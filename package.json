@@ -1,6 +1,6 @@
 {
     "name": "akasha-system.js",
-    "version": "0.2.0",
+    "version": "0.3.0",
     "description": "API wrapper for akasha.cv",
     "main": "dist/index.js",
     "types": "dist/index.d.ts",
@@ -11,6 +11,7 @@
         "gen:types": "openapi-typescript ./spec/openapi.yaml -o ./src/schema.ts",
         "gen": "pnpm run gen:openapi && pnpm run gen:types",
         "validate": "ts-node spec/validateSpec.ts",
+        "chrome:debug": "google-chrome --remote-debugging-port=9222 --headless",
         "prepare": "husky"
     },
     "files": [

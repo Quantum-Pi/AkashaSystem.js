@@ -5,6 +5,9 @@ const pkg = require('../package.json')
 type GetCalculationsForUser =
     operations['getApiGetCalculationsForUserById']['responses']['200']['content']['application/json']
 
+type GetBuilds =
+    operations['getApiBuilds']['responses']['200']['content']['application/json']
+
 type GetApiFiltersArtifacts =
     operations['getApiFiltersArtifacts']['responses']['200']['content']['application/json']
 
@@ -35,6 +38,15 @@ export default class AkashaAPI {
         uuid: string
     ): Promise<GetCalculationsForUser> {
         const url = `${this.baseURL}getCalculationsForUser/${uuid}`
+        const response = await fetch(url, {
+            method: 'GET',
+            headers: this.header,
+        })
+        return await response.json()
+    }
+
+    async getBuildsForUser(uuid: string): Promise<GetBuilds> {
+        const url = `${this.baseURL}builds/?uid=${uuid}`
         const response = await fetch(url, {
             method: 'GET',
             headers: this.header,
